@@ -14,42 +14,57 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Awesome App"),
       ),
-      body: Center(
-      child: Container(
+      body: Center( 
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        
+        //"MainAxisAlignment" Row ki property hai....row ko align krne ke liye.. Try=> "MainAxisAlign.spacebetween" "MainAxisAlign.spacearound" "MainAxisAlign.spaceevenly"
+        
+        crossAxisAlignment: CrossAxisAlignment.start,
+        //ye upar wale ka opposite hoga...mtlb vertical show krega boxes ko...lekin abhi uske liye upar ke  body: Center ko htana padega...center pe "ctrl + ." press krke "remove this widget" ko press kro
+        // Try=> "CrossAxisAlignment.stretch"
+       
+       //lekin agr Row ko column krenge to sahi se nhi hoga...uske liye mediaquery use krenge=>>
+
+    //  body: Container(  child: Row(
+    // mainAxisAlignment: MainAxisAlignment.       center, 
+    // crossAxisAlignment: CrossAxisAlignment.start,
+    // width:MediaQuery.of(context).size.width
+     // height:MediaQuery.of(context).size.height
+
+      //Agr "height:MediaQuery.of(context).size.height/2" krenge to wo half space lega 
+      
+      // container ke upar "ctrl + ." press krke "Wrap with padding" krenge to wo saare items ko...jo container ke andar hai unko paading de dega" Try Alignment too
+       
+       
+       
+       
+       
+       
+       
+        children: <Widget>[
+        Container(
         padding: const EdgeInsets.all(8),
-        alignment:Alignment.center,
+        width: 100,
+        height: 100,
+        color: Colors.green,
+     
+      ),
+       
+       Container(
+        padding: const EdgeInsets.all(8),
+        width: 100,
+        height: 100,
+        color: Colors.yellow,
+      ),
+       
+       Container(
+        padding: const EdgeInsets.all(8),
         color: Colors.teal,
         width: 100,
         height: 100,
-        decoration: BoxDecoration(
-         // shape: BoxShape.circle,
-         // circle kr skte hain ya fir rectangle hi rehne de skte hain as aacording to height and width we set earlier
-         //but agr rectagle me Border-Radius dena hai to..niche
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              ColorColors.grey[400], 
-              blurRadius: 5,
-              spreadRadius: 2,
-              offset: Offset(2.0, 5.0)
-            )
-          ],
-          color: Colors.teal,
-          gradient: LinearGradient(colors: [
-            Colors.red,
-            Colors.pink
-          ])
-        ), //Alag se color likhte hain to error dega. Color dena hai to decoration ke andar do. Agr bahar dena hai to decoration mt do
-         //Gradient me array[] ka use multiple colors likhne ke iye krte hain 
-        child: Text("I am a Box", 
-        textAlign: TextAlign.center, 
-        style: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold, 
-          fontSize: 20
-          ),
-          ),
-      ),   
+      ),
+        ],
       ),   
     );
   }
