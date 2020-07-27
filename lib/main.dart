@@ -4,6 +4,9 @@ void main() {
   runApp(MaterialApp(
     title: "Awesome App", // Ye title minimize krne pe dikhta hai
     home: HomePage;
+    theme: ThemeData(
+     primarySwatch: Colors.purple  // Upar ka Navbar Ka color change ho jaega
+    ),
   ));
 }
 
@@ -14,58 +17,42 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Awesome App"),
       ),
-      body: Center( 
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        
-        //"MainAxisAlignment" Row ki property hai....row ko align krne ke liye.. Try=> "MainAxisAlign.spacebetween" "MainAxisAlign.spacearound" "MainAxisAlign.spaceevenly"
-        
-        crossAxisAlignment: CrossAxisAlignment.start,
-        //ye upar wale ka opposite hoga...mtlb vertical show krega boxes ko...lekin abhi uske liye upar ke  body: Center ko htana padega...center pe "ctrl + ." press krke "remove this widget" ko press kro
-        // Try=> "CrossAxisAlignment.stretch"
-       
-       //lekin agr Row ko column krenge to sahi se nhi hoga...uske liye mediaquery use krenge=>>
+      body: Container(),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            // DrawerHeader(child: Text("Hi, I am drawer", style: TextStyle(color: Colors.white),),
+            // decoration: BoxDecoration(color: Colors.purpleAccent),
+             
+            // ),
 
-    //  body: Container(  child: Row(
-    // mainAxisAlignment: MainAxisAlignment.       center, 
-    // crossAxisAlignment: CrossAxisAlignment.start,
-    // width:MediaQuery.of(context).size.width
-     // height:MediaQuery.of(context).size.height
+           UserAccountsDrawerHeader(
+             accountName: Text("Sannidhya Kushwaha"), accountEmail:Text("sannidhyakushwaha@gmail.com"),  
+           currentAccountPicture: Image.network("https://images.unsplash.com/photo-1533512930330-4ac257c86793?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+           ),
+           // lekin agr is pic ko circle me krna hai to....=> currentAccountPicture : CircleAvatar(backgroundImage: NetworkImage("https://images.unsplash.com/photo-1533512930330-4ac257c86793?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"),),
+           ),
 
-      //Agr "height:MediaQuery.of(context).size.height/2" krenge to wo half space lega 
-      
-      // container ke upar "ctrl + ." press krke "Wrap with padding" krenge to wo saare items ko...jo container ke andar hai unko paading de dega" Try Alignment too
-       
-       
-       
-       
-       
-       
-       
-        children: <Widget>[
-        Container(
-        padding: const EdgeInsets.all(8),
-        width: 100,
-        height: 100,
-        color: Colors.green,
-     
-      ),
-       
-       Container(
-        padding: const EdgeInsets.all(8),
-        width: 100,
-        height: 100,
-        color: Colors.yellow,
-      ),
-       
-       Container(
-        padding: const EdgeInsets.all(8),
-        color: Colors.teal,
-        width: 100,
-        height: 100,
-      ),
-        ],
-      ),   
-    );
+            ListTile(
+            leading: Icon(Icons.person),
+            title: Text("Account"), 
+            subtitle: Text("Personal"),
+            trailing: Icon(Icons.edit),
+            ),
+            
+            ListTile(
+            leading: Icon(Icons.email),
+            title: Text("Email"),
+            subtitle: Text("sannidhyakushwaha@gmail.com"),
+            trailing: Icon(Icons.send),
+            ),
+          ],
+        ),
+         ), 
+      floatingActionButton: FloatingActionButton(onPressed: () {},
+      child: Icon(Icons.edit),
+      ), 
+       );
   }
 }
