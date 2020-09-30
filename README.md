@@ -1,5 +1,5 @@
 # awesomeapp
-My new Flutter project.
+My First Flutter project.
 
 ## Getting Started
 
